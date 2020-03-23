@@ -3,29 +3,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
 <title>Kalkulator szyb</title>
 <script type="text/javascript">
-function onlyNumbers(evt)
-{
-  if(window.event){
-    kod = window.event.keyCode;
+function onlyNumbers(event) {
+  if (window.event) {
+    code = window.event.keyCode;
+  } else {
+    code = event.which;
   }
-  else{
-    kod = evt.which;
-  }
-  if(window.event){
-    if(kod < 48 || kod > 57){
+  if (window.event) {
+    if (code < 48 || code > 57) {
       window.event.returnValue = false;
-    }
-    else{
+    } else {
       window.event.returnValue = true;
     }
-  }
-  else{
-    if(kod < 48 || kod > 57){
-      evt.returnValue = false;
-      evt.preventDefault();
-    }
-    else{
-      evt.returnValue = true;
+  } else {
+    if (kod < 48 || kod > 57) {
+      event.returnValue = false;
+      event.preventDefault();
+    } else {
+      event.returnValue = true;
     }
   }
 }
