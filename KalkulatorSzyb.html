@@ -6,6 +6,8 @@
 
 // JavaScript
 
+var output = document.getElementById("output");
+
 function onlyNumbers(event) {
   if (window.event) {
     code = window.event.keyCode;
@@ -28,6 +30,26 @@ function onlyNumbers(event) {
   }
 }
 
+function calculate (glassWidth, glassHeight, spacerThickness) {
+var longerDimension;
+var shorterDimension;
+var result = ""
+
+	if (glassWidth > glassHeight) {
+		longerDimension = glassWidth;
+		shorterDimension = glassHeight;
+	} else {
+		longerDimension = glassHeight;
+		shorterDimension = glassWidth;
+	}
+	
+	result = "Longer dimension = " + longerDimension.value + ", shorter dimension = " + shorterDimension.value;
+	//document.write(result);
+	//output.innerHTML = el.value;
+	
+	document.getElementById("output").textContent = result;
+}
+
 
 // JavaScript
 
@@ -43,7 +65,8 @@ Obliczenia oparte s± na normie zak³±dowej firmy PRESS GLASS SA.<br><br>
 <input type="text" name="glassHeight" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
 <label for="spacerThickness">Szeroko¶æ ramki dystansowej [mm]:</label><br>
 <input type="text" name="spacerThickness" value=16 maxlength=2 onKeyPress="onlyNumbers(event)"><br><br>
-<input type="button" name="oblicz" value="Oblicz" onClick="">
+<input type="button" name="oblicz" value="Oblicz" onClick="calculate(glassWidth, glassHeight, spacerThickness)">
 </form>
+<div id="output"></div>
 </body>
 </html>
