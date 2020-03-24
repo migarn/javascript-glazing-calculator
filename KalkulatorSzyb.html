@@ -31,11 +31,11 @@ function onlyNumbers(event) {
 Obliczenia oparte s± na normie zak³±dowej firmy PRESS GLASS SA.<br><br>
 <form name="glazingCalculator">
 <label for="glassWidth">Szeroko¶æ szyby [mm]:</label><br>
-<input type="text" name="glassWidth" onKeyPress="onlyNumbers(event)"><br><br>
+<input type="text" name="glassWidth" value=0 onKeyPress="onlyNumbers(event)"><br><br>
 <label for="glassHeight">Wysoko¶æ szyby [mm]:</label><br>
-<input type="text" name="glassHeight" onKeyPress="onlyNumbers(event)"><br><br>
+<input type="text" name="glassHeight" value=0 onKeyPress="onlyNumbers(event)"><br><br>
 <label for="spacerThickness">Szeroko¶æ ramki dystansowej [mm]:</label><br>
-<input type="text" name="spacerThickness" onKeyPress="onlyNumbers(event)"><br><br>
+<input type="text" name="spacerThickness" value=16 onKeyPress="onlyNumbers(event)"><br><br>
 <input type="button" name="oblicz" value="Oblicz" onClick="">
 </form>
 </body>
