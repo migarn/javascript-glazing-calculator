@@ -3,6 +3,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
 <title>Kalkulator szyb</title>
 <script type="text/javascript">
+
+// JavaScript
+
 function onlyNumbers(event) {
   if (window.event) {
     code = window.event.keyCode;
@@ -16,7 +19,7 @@ function onlyNumbers(event) {
       window.event.returnValue = true;
     }
   } else {
-    if (kod < 48 || kod > 57) {
+    if (code < 48 || code > 57) {
       event.returnValue = false;
       event.preventDefault();
     } else {
@@ -24,6 +27,10 @@ function onlyNumbers(event) {
     }
   }
 }
+
+
+// JavaScript
+
 </script>
 </head>
 <body>
@@ -31,11 +38,11 @@ function onlyNumbers(event) {
 Obliczenia oparte są na normie zakłądowej firmy PRESS GLASS SA.<br><br>
 <form name="glazingCalculator">
 <label for="glassWidth">Szerokość szyby [mm]:</label><br>
-<input type="text" name="glassWidth" value=0 onKeyPress="onlyNumbers(event)"><br><br>
+<input type="text" name="glassWidth" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
 <label for="glassHeight">Wysokość szyby [mm]:</label><br>
-<input type="text" name="glassHeight" value=0 onKeyPress="onlyNumbers(event)"><br><br>
+<input type="text" name="glassHeight" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
 <label for="spacerThickness">Szerokość ramki dystansowej [mm]:</label><br>
-<input type="text" name="spacerThickness" value=16 onKeyPress="onlyNumbers(event)"><br><br>
+<input type="text" name="spacerThickness" value=16 maxlength=2 onKeyPress="onlyNumbers(event)"><br><br>
 <input type="button" name="oblicz" value="Oblicz" onClick="">
 </form>
 </body>
