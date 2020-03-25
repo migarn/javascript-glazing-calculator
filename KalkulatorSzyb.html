@@ -9,25 +9,26 @@
 var output = document.getElementById("output");
 
 function onlyNumbers(event) {
-  if (window.event) {
-    code = window.event.keyCode;
-  } else {
-    code = event.which;
-  }
-  if (window.event) {
-    if (code < 48 || code > 57) {
-      window.event.returnValue = false;
-    } else {
-      window.event.returnValue = true;
-    }
-  } else {
-    if (code < 48 || code > 57) {
-      event.returnValue = false;
-      event.preventDefault();
-    } else {
-      event.returnValue = true;
-    }
-  }
+	if (window.event) {
+		code = window.event.keyCode;
+	} else {
+		code = event.which;
+	}
+	
+	if (window.event) {
+		if (code < 48 || code > 57) {
+			window.event.returnValue = false;
+		} else {
+			window.event.returnValue = true;
+		}
+	} else {
+		if (code < 48 || code > 57) {
+			event.returnValue = false;
+			event.preventDefault();
+		} else {
+			event.returnValue = true;
+		}
+	}
 }
 
 function calculate (glassWidth, glassHeight, spacerThickness) {
