@@ -6,8 +6,6 @@
 
 // JavaScript
 
-var output = document.getElementById("output");
-
 function onlyNumbers(event) {
 	if (window.event) {
 		code = window.event.keyCode;
@@ -32,10 +30,9 @@ function onlyNumbers(event) {
 }
 
 function calculate (glassWidth, glassHeight, spacerThickness) {
-var longerDimension;
-var shorterDimension;
-var message = "";
-
+	var longerDimension;
+	var shorterDimension;
+	var message = "";
 
 	if (glassWidth > glassHeight) {
 		longerDimension = glassWidth.value;
@@ -52,6 +49,28 @@ var message = "";
 	document.getElementById("output").textContent = message;
 }
 
+function determineSurcharge(longerDimension, shorterDimension) {
+	if (longerDimension <= shorterDimension) {
+		return 0;
+	} else if ((longerDimension > 2400 && longerDimension <= 3000 && shorterDimension > 2400 && shorterDimension <= 2700) ||
+	(longerDimension > 3000 && longerDimension <= 4000 && shorterDimension < 2000)) {
+		return 50;
+	} else if ((longerDimension > 3000 && longerDimension <= 4000 && shorterDimension > 2000 && shorterDimension <= 2400) ||
+	(longerDimension > 4000 && longerDimension <= 5000 && shorterDimension < 2000)) {
+		return 75;
+	} else if ((longerDimension > 3000 && longerDimension <= 4000 && shorterDimension > 2400 && shorterDimension <= 2700) ||
+	(longerDimension > 4000 && longerDimension <= 5000 && shorterDimension > 2000 && shorterDimension <= 2400) ||
+	(longerDimension > 5000 && longerDimension <= 6000 && shorterDimension < 2000)) {
+		return 100;
+	} else if ((longerDimension > 4000 && longerDimension <= 5000 && shorterDimension > 2400 && shorterDimension <= 2700) ||
+    (longerDimension > 5000 && longerDimension <= 6000 && shorterDimension > 2000 && shorterDimension <= 2400)) {
+		return 125;
+	} else if (longerDimension > 5000 && longerDimension <= 6000 && shorterDimension > 2400 && shorterDimension <= 2700) {
+		return 150;
+	} else {
+		return -1;
+	}      
+}
 
 // JavaScript
 
