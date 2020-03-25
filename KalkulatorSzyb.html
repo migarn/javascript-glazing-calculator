@@ -33,21 +33,22 @@ function onlyNumbers(event) {
 function calculate (glassWidth, glassHeight, spacerThickness) {
 var longerDimension;
 var shorterDimension;
-var result = ""
+var message = "";
+
 
 	if (glassWidth > glassHeight) {
-		longerDimension = glassWidth;
-		shorterDimension = glassHeight;
+		longerDimension = glassWidth.value;
+		shorterDimension = glassHeight.value;
 	} else {
-		longerDimension = glassHeight;
-		shorterDimension = glassWidth;
+		longerDimension = glassHeight.value;
+		shorterDimension = glassWidth.value;
 	}
 	
-	result = "Longer dimension = " + longerDimension.value + ", shorter dimension = " + shorterDimension.value;
-	//document.write(result);
-	//output.innerHTML = el.value;
+	var area = Math.round(100 *longerDimension * shorterDimension / (1000 * 1000)) / 100;
 	
-	document.getElementById("output").textContent = result;
+	message = "Longer dimension = " + longerDimension + ", shorter dimension = " + shorterDimension;
+	message += "\nArea = " + area;
+	document.getElementById("output").textContent = message;
 }
 
 
@@ -66,7 +67,7 @@ Obliczenia oparte s± na normie zak³±dowej firmy PRESS GLASS SA.<br><br>
 <label for="spacerThickness">Szeroko¶æ ramki dystansowej [mm]:</label><br>
 <input type="text" name="spacerThickness" value=16 maxlength=2 onKeyPress="onlyNumbers(event)"><br><br>
 <input type="button" name="oblicz" value="Oblicz" onClick="calculate(glassWidth, glassHeight, spacerThickness)">
-</form>
-<div id="output"></div>
+</form><br>
+<div id="output" style="color:red;"></div>
 </body>
 </html>
