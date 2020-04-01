@@ -45,12 +45,13 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	var area = Math.round(100 *longerDimension * shorterDimension / (1000 * 1000)) / 100;
 	var surcharge = determineSurcharge(longerDimension, shorterDimension);
 	
-	message = "Longer dimension = " + longerDimension + ", shorter dimension = " + shorterDimension;
-	message += "\nArea = " + area;
-	message += "\nSurcharge = " + surcharge;
+	message = "Za³o¿one parametry szyby:" +
+				"\n\t- wymiary: " + glassWidth.value + " mm x " + glassHeight.value + " mm," +
+				"\n\t- powierzchnia szyby: " + area + " m2," +
+				"\n\t- szeroko¶æ ramki dystansowej: " + spacerThickness.value + " mm.";
 	
 	document.getElementById("mainOutput").textContent = message;
-	document.getElementById("surchargeOutput").textContent = message;
+	document.getElementById("surchargeOutput").textContent = "Dop³ata: " + surcharge;
 	document.getElementById("assumptionsOutput").textContent = "\nPowy¿sze obliczenia maj± zastosowanie przy nastêpuj±cych za³o¿eniach:" +
 																"\n\t- szklenie jest pionowe," +
 																"\n\t- wysoko¶æ szklenia to 0-8 m ponad powierzchniê gruntu," +
@@ -87,6 +88,8 @@ function determineSurcharge(longerDimension, shorterDimension) {
 </script>
 <style>
 div {white-space: pre-wrap;}
+label {margin-left:2em;}
+input {margin-left:2em;}
 </style>
 </head>
 <body>
