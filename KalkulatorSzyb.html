@@ -52,7 +52,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	document.getElementById("mainOutput").textContent = message;
 	document.getElementById("surchargeOutput").textContent = message;
 	document.getElementById("assumptionsOutput").textContent = "\nPowy¿sze obliczenia maj± zastosowanie przy nastêpuj±cych za³o¿eniach:" +
-																"<br>\n\t- szklenie jest pionowe," +
+																"\n\t- szklenie jest pionowe," +
 																"\n\t- wysoko¶æ szklenia to 0-8 m ponad powierzchniê gruntu," +
 																"\n\t- szyba jest klinowana na czterech bokach," +
 																"\n\t- nie dotyczy szklenia naro¿ników budynków," +
@@ -85,6 +85,9 @@ function determineSurcharge(longerDimension, shorterDimension) {
 // JavaScript
 
 </script>
+<style>
+div {white-space: pre-wrap;}
+</style>
 </head>
 <body>
 <br>Kalkulator s³u¿y do obliczania minimalnych grubo¶ci szyb.<br>
@@ -98,10 +101,8 @@ Obliczenia oparte s± na normie zak³±dowej firmy PRESS GLASS SA.<br><br>
 	<input type="text" name="spacerThickness" value=16 maxlength=2 onKeyPress="onlyNumbers(event)"><br><br>
 	<input type="button" name="oblicz" value="Oblicz" onClick="calculate(glassWidth, glassHeight, spacerThickness)">
 </form><br>
-<pre>
 <div id="mainOutput"/></div>
 <div id="surchargeOutput" style="color:red;"/></div>
 <div id="assumptionsOutput"/></div>
-</pre>
 </body>
 </html>
