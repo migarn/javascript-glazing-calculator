@@ -49,7 +49,14 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	message += "\nArea = " + area;
 	message += "\nSurcharge = " + surcharge;
 	
-	document.getElementById("output").textContent = message;
+	document.getElementById("mainOutput").textContent = message;
+	document.getElementById("surchargeOutput").textContent = message;
+	document.getElementById("assumptionsOutput").textContent = "\nPowy¿sze obliczenia maj± zastosowanie przy nastêpuj±cych za³o¿eniach:" +
+																"\n\t- szklenie jest pionowe," +
+																"\n\t- wysoko¶æ szklenia to 0-8 m ponad powierzchniê gruntu," +
+																"\n\t- szyba jest klinowana na czterech bokach," +
+																"\n\t- nie dotyczy szklenia naro¿ników budynków," +
+																"\n\t- przyjêto ¶rednie obci±¿enie wiatrem w Polsce.";
 }
 
 function determineSurcharge(longerDimension, shorterDimension) {
@@ -83,14 +90,16 @@ function determineSurcharge(longerDimension, shorterDimension) {
 <br>Kalkulator s³u¿y do obliczania minimalnych grubo¶ci szyb.<br>
 Obliczenia oparte s± na normie zak³±dowej firmy PRESS GLASS SA.<br><br>
 <form name="glazingCalculator">
-<label for="glassWidth">Szeroko¶æ szyby [mm]:</label><br>
-<input type="text" name="glassWidth" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
-<label for="glassHeight">Wysoko¶æ szyby [mm]:</label><br>
-<input type="text" name="glassHeight" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
-<label for="spacerThickness">Szeroko¶æ ramki dystansowej [mm]:</label><br>
-<input type="text" name="spacerThickness" value=16 maxlength=2 onKeyPress="onlyNumbers(event)"><br><br>
-<input type="button" name="oblicz" value="Oblicz" onClick="calculate(glassWidth, glassHeight, spacerThickness)">
+	<label for="glassWidth">Szeroko¶æ szyby [mm]:</label><br>
+	<input type="text" name="glassWidth" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
+	<label for="glassHeight">Wysoko¶æ szyby [mm]:</label><br>
+	<input type="text" name="glassHeight" value=0 maxlength=4 onKeyPress="onlyNumbers(event)"><br><br>
+	<label for="spacerThickness">Szeroko¶æ ramki dystansowej [mm]:</label><br>
+	<input type="text" name="spacerThickness" value=16 maxlength=2 onKeyPress="onlyNumbers(event)"><br><br>
+	<input type="button" name="oblicz" value="Oblicz" onClick="calculate(glassWidth, glassHeight, spacerThickness)">
 </form><br>
-<div id="output" style="color:red;"></div>
+<div id="mainOutput"/></div>
+<div id="surchargeOutput" style="color:red;"/></div>
+<div id="assumptionsOutput"/></div>
 </body>
 </html>
