@@ -53,7 +53,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 }
 
 function determineSurcharge(longerDimension, shorterDimension) {
-	if (longerDimension <= shorterDimension) {
+	if (longerDimension <=3000 && shorterDimension <= 2400) {
 		return 0;
 	} else if ((longerDimension > 2400 && longerDimension <= 3000 && shorterDimension > 2400 && shorterDimension <= 2700) ||
 	(longerDimension > 3000 && longerDimension <= 4000 && shorterDimension < 2000)) {
