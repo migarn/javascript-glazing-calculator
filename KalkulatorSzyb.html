@@ -34,7 +34,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	var shorterDimension;
 	var message = "";
 
-	if (glassWidth > glassHeight) {
+	if (Number(glassWidth.value) > Number(glassHeight.value)) {
 		longerDimension = glassWidth.value;
 		shorterDimension = glassHeight.value;
 	} else {
@@ -42,7 +42,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 		shorterDimension = glassWidth.value;
 	}
 	
-	var area = Math.round(100 *longerDimension * shorterDimension / (1000 * 1000)) / 100;
+	var area = Math.round(100 * longerDimension * shorterDimension / (1000 * 1000)) / 100;
 	var surcharge = determineSurcharge(longerDimension, shorterDimension);
 	
 	message = "Za³o¿one parametry szyby:" +
@@ -50,8 +50,22 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 				"\n\t- powierzchnia szyby: " + area + " m2," +
 				"\n\t- szeroko¶æ ramki dystansowej: " + spacerThickness.value + " mm.";
 	
+	message += "\n\n " + longerDimension + " " + shorterDimension;
+	
 	document.getElementById("mainOutput").textContent = message;
-	document.getElementById("surchargeOutput").textContent = "Dop³ata: " + surcharge;
+	
+	if (surcharge > 0) {
+		document.getElementById("surchargeOutput").textContent = "\nDla zadanych parametrów dop³ata za nadgabaryt wynosi " + surcharge + "%!";
+		document.getElementById("noSurchargeOutput").textContent = "";
+	} else if (surcharge == 0) {
+		document.getElementById("surchargeOutput").textContent = "";
+		document.getElementById("noSurchargeOutput").textContent = "\nDla zadanych parametrów nie ma dop³aty za nadgabaryt.";
+	} 
+	else {
+		document.getElementById("surchargeOutput").textContent = "\nDla zadanych parametrów wielko¶æ dop³aty za nadgabaryt nale¿y konsultowaæ z dostawc± szk³a!";
+		document.getElementById("noSurchargeOutput").textContent = "";
+	}
+			
 	document.getElementById("assumptionsOutput").textContent = "\nPowy¿sze obliczenia maj± zastosowanie przy nastêpuj±cych za³o¿eniach:" +
 																"\n\t- szklenie jest pionowe," +
 																"\n\t- wysoko¶æ szklenia to 0-8 m ponad powierzchniê gruntu," +
@@ -61,7 +75,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 }
 
 function determineSurcharge(longerDimension, shorterDimension) {
-	if (longerDimension <=3000 && shorterDimension <= 2400) {
+	if (longerDimension <= 3000 && shorterDimension <= 2400) {
 		return 0;
 	} else if ((longerDimension > 2400 && longerDimension <= 3000 && shorterDimension > 2400 && shorterDimension <= 2700) ||
 	(longerDimension > 3000 && longerDimension <= 4000 && shorterDimension < 2000)) {
@@ -106,6 +120,7 @@ Obliczenia oparte s± na normie zak³±dowej firmy PRESS GLASS SA.<br><br>
 </form><br>
 <div id="mainOutput"/></div>
 <div id="surchargeOutput" style="color:red;"/></div>
+<div id="noSurchargeOutput"/></div>
 <div id="assumptionsOutput"/></div>
 </body>
 </html>
