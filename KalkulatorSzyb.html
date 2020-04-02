@@ -44,14 +44,14 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	var area = Math.round(100 * longerDimension * shorterDimension / (1000 * 1000)) / 100;
 	var surcharge = determineSurcharge(longerDimension, shorterDimension);
 	var ratio = shorterDimension / longerDimension;
-	
-	// sparsowaæ spacerThickness do Number przy przekazywaniu do defineThickness
-	
-	
+	var	thickness = defineThickness(longerDimension, shorterDimension, Number(spacerThickness.value), area, ratio);
+		
 	var mainOutputMessage = "Za³o¿one parametry szyby:" +
 				"\n\t- wymiary: " + glassWidth.value + " mm x " + glassHeight.value + " mm," +
 				"\n\t- powierzchnia szyby: " + area + " m2," +
 				"\n\t- szeroko¶æ ramki dystansowej: " + spacerThickness.value + " mm.";
+				
+	mainOutputMessage += "\nGrubo¶æ: " + thickness;			
 	
 	document.getElementById("mainOutput").textContent = mainOutputMessage;
 	
@@ -113,7 +113,7 @@ function defineThickness(longerDimension, shorterDimension, spacerThickness, are
 }
 
 function defineThicknessFor16(longerDimension, shorterDimension, area, ratio) {
-	if (area <= 1.5 && longerDimension <= 1500 && ratio >=  1/6) {
+	if (area <= 1.5 && longerDimension <= 1500 && ratio >= 1/6) {
 		return 3;
 	} else if (area <= 3.35 && longerDimension <= 2500 && ratio >= 1/6) {
 		return 4;
@@ -133,7 +133,7 @@ function defineThicknessFor16(longerDimension, shorterDimension, area, ratio) {
 }
 
 function defineThicknessFor12(longerDimension, shorterDimension, area, ratio) {
-	if (area <= 1.5 && longerDimension <= 1500 && ratio >=  1/6) {
+	if (area <= 1.5 && longerDimension <= 1500 && ratio >= 1/6) {
 		return 3;
 	} else if (area <= 3.35 && longerDimension <= 2500 && ratio >= 1/6) {
 		return 4;
@@ -149,7 +149,7 @@ function defineThicknessFor12(longerDimension, shorterDimension, area, ratio) {
 }
 
 function defineThicknessFor9(longerDimension, shorterDimension, area, ratio) {
-	if (area <= 1.5 && longerDimension <= 1500 && ratio >=  1/6) {
+	if (area <= 1.5 && longerDimension <= 1500 && ratio >= 1/6) {
 		return 3;
 	} else if (area <= 2.5 && longerDimension <= 2500 && ratio >= 1/6) {
 		return 4;
@@ -165,7 +165,7 @@ function defineThicknessFor9(longerDimension, shorterDimension, area, ratio) {
 }
 
 function defineThicknessFor6(longerDimension, shorterDimension, area, ratio) {
-	if (area <= 2 && longerDimension <= 2000 && ratio >=  1/6) {
+	if (area <= 2 && longerDimension <= 2000 && ratio >= 1/6) {
 		return 4;
 	} else if (area <= 2.5 && longerDimension <= 2500) {
 		return 5;
