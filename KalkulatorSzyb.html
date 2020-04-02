@@ -32,7 +32,6 @@ function onlyNumbers(event) {
 function calculate (glassWidth, glassHeight, spacerThickness) {
 	var longerDimension;
 	var shorterDimension;
-	var message = "";
 
 	if (Number(glassWidth.value) > Number(glassHeight.value)) {
 		longerDimension = glassWidth.value;
@@ -44,15 +43,17 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	
 	var area = Math.round(100 * longerDimension * shorterDimension / (1000 * 1000)) / 100;
 	var surcharge = determineSurcharge(longerDimension, shorterDimension);
+	var ratio = shorterDimension / longerDimension;
 	
-	message = "Za³o¿one parametry szyby:" +
+	// sparsowaæ spacerThickness do Number przy przekazywaniu do defineThickness
+	
+	
+	var mainOutputMessage = "Za³o¿one parametry szyby:" +
 				"\n\t- wymiary: " + glassWidth.value + " mm x " + glassHeight.value + " mm," +
 				"\n\t- powierzchnia szyby: " + area + " m2," +
 				"\n\t- szeroko¶æ ramki dystansowej: " + spacerThickness.value + " mm.";
 	
-	message += "\n\n " + longerDimension + " " + shorterDimension;
-	
-	document.getElementById("mainOutput").textContent = message;
+	document.getElementById("mainOutput").textContent = mainOutputMessage;
 	
 	if (surcharge > 0) {
 		document.getElementById("surchargeOutput").textContent = "\nDla zadanych parametrów dop³ata za nadgabaryt wynosi " + surcharge + "%!";
@@ -95,6 +96,20 @@ function determineSurcharge(longerDimension, shorterDimension) {
 	} else {
 		return -1;
 	}      
+}
+
+function defineThickness(longerDimension, shorterDimension, spacerThickness) {
+	if (spacerThickness >= 16) {
+		return defineThicknessFor16(longerDimension, shorterDimension);
+	} else if (spacerThickness >= 12) {
+		return defineThicknessFor12(longerDimension, shorterDimension);
+	} else if (spacerThickness >= 9) {
+		return defineThicknessFor9(longerDimension, shorterDimension);
+	} else if (spacerThickness >= 6) {
+		return defineThicknessFor6(longerDimension, shorterDimension);
+	} else {
+		return -1;
+	}
 }
 
 // JavaScript
