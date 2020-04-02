@@ -115,7 +115,7 @@ function defineThickness(longerDimension, shorterDimension, spacerThickness, are
 function defineThicknessFor16(longerDimension, shorterDimension, area, ratio) {
 	if (area <= 1.5 && longerDimension <= 1500 && ratio >=  1/6) {
 		return 3;
-	} else if (area <= 3.35 && longerDimension <= 2500 && ratio >= (double) 1/6) {
+	} else if (area <= 3.35 && longerDimension <= 2500 && ratio >= 1/6) {
 		return 4;
 	} else if (area <= 5 && longerDimension <= 3300) {
 		return 5;
@@ -127,6 +127,52 @@ function defineThicknessFor16(longerDimension, shorterDimension, area, ratio) {
 		return 10;
 	} else if (area <= 13.5 && longerDimension <= 6000) {
 		return 12;
+	} else {
+		return -1;
+	}
+}
+
+function defineThicknessFor12(longerDimension, shorterDimension, area, ratio) {
+	if (area <= 1.5 && longerDimension <= 1500 && ratio >=  1/6) {
+		return 3;
+	} else if (area <= 3.35 && longerDimension <= 2500 && ratio >= 1/6) {
+		return 4;
+	} else if (area <= 5 && longerDimension <= 3300) {
+		return 5;
+	} else if (area <= 7 && longerDimension <= 3500) {
+		return 6;
+	} else if (area <= 8.75 && longerDimension <= 3500) {
+		return 8;
+	} else {
+		return -1;
+	}
+}
+
+function defineThicknessFor9(longerDimension, shorterDimension, area, ratio) {
+	if (area <= 1.5 && longerDimension <= 1500 && ratio >=  1/6) {
+		return 3;
+	} else if (area <= 2.5 && longerDimension <= 2500 && ratio >= 1/6) {
+		return 4;
+	} else if (area <= 3.5 && longerDimension <= 3000) {
+		return 5;
+	} else if (area <= 4.5 && longerDimension <= 3000) {
+		return 6;
+	} else if (area <= 6 && longerDimension <= 3000) {
+		return 8;
+	} else {
+		return -1;
+	}
+}
+
+function defineThicknessFor6(longerDimension, shorterDimension, area, ratio) {
+	if (area <= 2 && longerDimension <= 2000 && ratio >=  1/6) {
+		return 4;
+	} else if (area <= 2.5 && longerDimension <= 2500) {
+		return 5;
+	} else if (area <= 3 && longerDimension <= 3000) {
+		return 6;
+	} else if (area <= 4 && longerDimension <= 3000) {
+		return 8;
 	} else {
 		return -1;
 	}
