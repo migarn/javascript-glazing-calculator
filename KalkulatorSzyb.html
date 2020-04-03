@@ -42,7 +42,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 	}
 	
 	var area = Math.round(100 * longerDimension * shorterDimension / (1000 * 1000)) / 100;
-	var surcharge = determineSurcharge(longerDimension, shorterDimension);
+	var surcharge = defineSurcharge(longerDimension, shorterDimension);
 	var ratio = shorterDimension / longerDimension;
 	var	thickness = defineThickness(longerDimension, shorterDimension, Number(spacerThickness.value), area, ratio);
 		
@@ -51,7 +51,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 				"\n\t- powierzchnia szyby: " + area + " m2," +
 				"\n\t- szeroko¶æ ramki dystansowej: " + spacerThickness.value + " mm.";
 				
-	mainOutputMessage += "\nGrubo¶æ: " + thickness;			
+	mainOutputMessage += "\n\n" + defineThicknessDescription(thickness);			
 	
 	document.getElementById("mainOutput").textContent = mainOutputMessage;
 	
@@ -75,7 +75,7 @@ function calculate (glassWidth, glassHeight, spacerThickness) {
 																"\n\t- przyjêto ¶rednie obci±¿enie wiatrem w Polsce.";
 }
 
-function determineSurcharge(longerDimension, shorterDimension) {
+function defineSurcharge(longerDimension, shorterDimension) {
 	if (longerDimension <= 3000 && shorterDimension <= 2400) {
 		return 0;
 	} else if ((longerDimension > 2400 && longerDimension <= 3000 && shorterDimension > 2400 && shorterDimension <= 2700) ||
@@ -176,6 +176,50 @@ function defineThicknessFor6(longerDimension, shorterDimension, area, ratio) {
 	} else {
 		return -1;
 	}
+}
+
+function defineThicknessDescription(thickness) {
+	var floatGlass = "";
+	var vsgGlass = "";
+	
+	switch (thickness) {
+		case 3:
+			floatGlass = "3";
+			vsgGlass = "33.1";
+			break;
+		case 4:
+			floatGlass = "4";
+			vsgGlass = "33.1";
+			break;
+		case 5:
+			floatGlass = "5";
+			vsgGlass = "44.1";
+			break;
+		case 6:
+			floatGlass = "6";
+			vsgGlass = "55.1";
+			break;
+		case 8:
+			floatGlass = "8";
+			vsgGlass = "66.1";
+			break;
+		case 10:
+			floatGlass = "10";
+			vsgGlass = "88.1";
+			break;
+		case 12:
+			floatGlass = "12";
+			vsgGlass = "10.10.1";
+			break;
+		case -1:
+			return "Dla zadanych parametrów grubo¶ci szyb nale¿y dobieraæ indywidualnie.";
+	}
+	
+	var message = "Dla zadanych parametrów minimalne grubo¶ci to:\n\t- " +
+					floatGlass + " mm - dla pojedynczej szyby,\n\t- " +
+					vsgGlass + " - dla szyby VSG."
+					
+	return message;
 }
 
 // JavaScript
