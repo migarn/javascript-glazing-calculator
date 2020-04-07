@@ -74,6 +74,9 @@ function calculate(glassWidth, glassHeight, spacerThickness) {
 		}
 		
 		if (ratio < 0.1) {
+			if (surcharge > 0) {
+				redMiddleOutputMessage += "\n";
+			}
 			redMiddleOutputMessage += "\nDla zadanych parametrów stosunek d³ugo¶ci boków jest mniejszy ni¿ 1:10!";
 		}
 		
